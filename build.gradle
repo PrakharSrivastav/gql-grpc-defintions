@@ -1,0 +1,53 @@
+ext { grpcVersion = '1.13.1' }
+
+group = "no.sysco.middleware.workshops"
+version = "1.0-SNAPSHOT"
+
+buildscript {
+  repositories { maven { url "https://maven-central.storage-download.googleapis.com/repos/central/data/" } }
+  dependencies { classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.6' }
+}
+apply plugin: 'java'
+apply plugin: 'com.google.protobuf'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+sourceSets {
+  main {
+    java {}
+    proto {srcDir "./schema"}
+  }
+}
+
+// Project dependencies
+repositories { jcenter() }
+dependencies {
+  compile "com.google.api.grpc:proto-google-common-protos:1.0.0"
+  compile "io.grpc:grpc-protobuf:${grpcVersion}"
+  compile "io.grpc:grpc-stub:${grpcVersion}"
+  compile "io.grpc:grpc-netty:${grpcVersion}"
+}
+
+// Configure protobuf tasks
+protobuf {
+  protoc {
+    artifact = 'com.google.protobuf:protoc:3.4.0'
+  }
+  plugins {
+    grpc {
+      artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+    }
+  }
+  // directory where the generated file will be created
+  generatedFilesBaseDir = "./java/"
+  generateProtoTasks {
+    all().each { t ->
+      t.plugins {
+        // subdirectory under generatedFilesBaseDir path where files should be generated
+        grpc { outputSubDir = 'java' }
+      }
+    }
+  }
+}
+

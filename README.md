@@ -8,4 +8,4 @@ Follow the instructions on [this](https://gist.github.com/sofyanhadia/37787e5ed0
 ### Create protobuf definition of payload and services
 ### Generate definitions in go and java
 `protoc --go_out=plugins=grpc:./go ./schema/*.proto`
-`protoc --java_out=./java ./schema/*.proto`
+`/gradlew build`
