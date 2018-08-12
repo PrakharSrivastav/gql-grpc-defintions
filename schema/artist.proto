@@ -1,0 +1,21 @@
+syntax = "proto3";
+package no.sysco.middleware.grpc;
+option java_package = "no.sysco.middleware.grpc";
+option java_outer_classname = "ArtistBaseDefinition";
+import "google/protobuf/empty.proto";
+
+message Artist {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+}
+
+message SimpleArtistRequest {
+    string id = 1;
+}
+
+service ArtistService {
+    rpc GetAll (google.protobuf.Empty) returns (stream Artist);
+    rpc GetArtistByAlbum (SimpleArtistRequest) returns (stream Artist);
+    rpc GetArtistByTrack (SimpleArtistRequest) returns (stream Artist);
+}

@@ -1,0 +1,24 @@
+syntax = "proto3";
+package no.sysco.middleware.grpc;
+option java_package = "no.sysco.middleware.grpc";
+option java_outer_classname = "TrackBaseDefinition";
+import "google/protobuf/empty.proto";
+
+message Track {
+    string id = 1;
+    string name = 2;
+    string artistId = 3;
+    string albumId = 4;
+    string description = 5;
+    double duration = 6;
+}
+
+message SimpleTrackRequest {
+    string id = 1;   
+}
+
+service TrackService {
+    rpc GetAll (google.protobuf.Empty) returns (stream Track);
+    rpc GetTrackByAlbum (SimpleTrackRequest) returns (stream Track);
+    rpc GetTrackByArtist (SimpleTrackRequest) returns (stream Track);
+}
