@@ -27,6 +27,33 @@ public final class TrackServiceGrpc {
   public static final String SERVICE_NAME = "no.sysco.middleware.grpc.TrackService";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<no.sysco.middleware.grpc.TrackBaseDefinition.SimpleTrackRequest,
+      no.sysco.middleware.grpc.TrackBaseDefinition.Track> getGetMethod;
+
+  public static io.grpc.MethodDescriptor<no.sysco.middleware.grpc.TrackBaseDefinition.SimpleTrackRequest,
+      no.sysco.middleware.grpc.TrackBaseDefinition.Track> getGetMethod() {
+    io.grpc.MethodDescriptor<no.sysco.middleware.grpc.TrackBaseDefinition.SimpleTrackRequest, no.sysco.middleware.grpc.TrackBaseDefinition.Track> getGetMethod;
+    if ((getGetMethod = TrackServiceGrpc.getGetMethod) == null) {
+      synchronized (TrackServiceGrpc.class) {
+        if ((getGetMethod = TrackServiceGrpc.getGetMethod) == null) {
+          TrackServiceGrpc.getGetMethod = getGetMethod = 
+              io.grpc.MethodDescriptor.<no.sysco.middleware.grpc.TrackBaseDefinition.SimpleTrackRequest, no.sysco.middleware.grpc.TrackBaseDefinition.Track>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "no.sysco.middleware.grpc.TrackService", "Get"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.grpc.TrackBaseDefinition.SimpleTrackRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.grpc.TrackBaseDefinition.Track.getDefaultInstance()))
+                  .setSchemaDescriptor(new TrackServiceMethodDescriptorSupplier("Get"))
+                  .build();
+          }
+        }
+     }
+     return getGetMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Empty,
       no.sysco.middleware.grpc.TrackBaseDefinition.Track> getGetAllMethod;
 
@@ -137,6 +164,13 @@ public final class TrackServiceGrpc {
 
     /**
      */
+    public void get(no.sysco.middleware.grpc.TrackBaseDefinition.SimpleTrackRequest request,
+        io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.TrackBaseDefinition.Track> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void getAll(com.google.protobuf.Empty request,
         io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.TrackBaseDefinition.Track> responseObserver) {
       asyncUnimplementedUnaryCall(getGetAllMethod(), responseObserver);
@@ -158,6 +192,13 @@ public final class TrackServiceGrpc {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getGetMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                no.sysco.middleware.grpc.TrackBaseDefinition.SimpleTrackRequest,
+                no.sysco.middleware.grpc.TrackBaseDefinition.Track>(
+                  this, METHODID_GET)))
           .addMethod(
             getGetAllMethod(),
             asyncServerStreamingCall(
@@ -199,6 +240,14 @@ public final class TrackServiceGrpc {
     protected TrackServiceStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new TrackServiceStub(channel, callOptions);
+    }
+
+    /**
+     */
+    public void get(no.sysco.middleware.grpc.TrackBaseDefinition.SimpleTrackRequest request,
+        io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.TrackBaseDefinition.Track> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -246,6 +295,13 @@ public final class TrackServiceGrpc {
 
     /**
      */
+    public no.sysco.middleware.grpc.TrackBaseDefinition.Track get(no.sysco.middleware.grpc.TrackBaseDefinition.SimpleTrackRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
     public java.util.Iterator<no.sysco.middleware.grpc.TrackBaseDefinition.Track> getAll(
         com.google.protobuf.Empty request) {
       return blockingServerStreamingCall(
@@ -286,11 +342,20 @@ public final class TrackServiceGrpc {
         io.grpc.CallOptions callOptions) {
       return new TrackServiceFutureStub(channel, callOptions);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<no.sysco.middleware.grpc.TrackBaseDefinition.Track> get(
+        no.sysco.middleware.grpc.TrackBaseDefinition.SimpleTrackRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetMethod(), getCallOptions()), request);
+    }
   }
 
-  private static final int METHODID_GET_ALL = 0;
-  private static final int METHODID_GET_TRACK_BY_ALBUM = 1;
-  private static final int METHODID_GET_TRACK_BY_ARTIST = 2;
+  private static final int METHODID_GET = 0;
+  private static final int METHODID_GET_ALL = 1;
+  private static final int METHODID_GET_TRACK_BY_ALBUM = 2;
+  private static final int METHODID_GET_TRACK_BY_ARTIST = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -309,6 +374,10 @@ public final class TrackServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_GET:
+          serviceImpl.get((no.sysco.middleware.grpc.TrackBaseDefinition.SimpleTrackRequest) request,
+              (io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.TrackBaseDefinition.Track>) responseObserver);
+          break;
         case METHODID_GET_ALL:
           serviceImpl.getAll((com.google.protobuf.Empty) request,
               (io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.TrackBaseDefinition.Track>) responseObserver);
@@ -382,6 +451,7 @@ public final class TrackServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new TrackServiceFileDescriptorSupplier())
+              .addMethod(getGetMethod())
               .addMethod(getGetAllMethod())
               .addMethod(getGetTrackByAlbumMethod())
               .addMethod(getGetTrackByArtistMethod())

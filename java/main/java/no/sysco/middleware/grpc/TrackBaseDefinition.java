@@ -1696,15 +1696,18 @@ public final class TrackBaseDefinition {
       "\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\020\n\010artistId\030\003 \001(" +
       "\t\022\017\n\007albumId\030\004 \001(\t\022\023\n\013description\030\005 \001(\t\022" +
       "\020\n\010duration\030\006 \001(\001\" \n\022SimpleTrackRequest\022" +
-      "\n\n\002id\030\001 \001(\t2\234\002\n\014TrackService\022C\n\006GetAll\022\026" +
-      ".google.protobuf.Empty\032\037.no.sysco.middle" +
-      "ware.grpc.Track0\001\022b\n\017GetTrackByAlbum\022,.n" +
-      "o.sysco.middleware.grpc.SimpleTrackReque" +
-      "st\032\037.no.sysco.middleware.grpc.Track0\001\022c\n",
-      "\020GetTrackByArtist\022,.no.sysco.middleware." +
-      "grpc.SimpleTrackRequest\032\037.no.sysco.middl" +
-      "eware.grpc.Track0\001B/\n\030no.sysco.middlewar" +
-      "e.grpcB\023TrackBaseDefinitionb\006proto3"
+      "\n\n\002id\030\001 \001(\t2\362\002\n\014TrackService\022T\n\003Get\022,.no" +
+      ".sysco.middleware.grpc.SimpleTrackReques" +
+      "t\032\037.no.sysco.middleware.grpc.Track\022C\n\006Ge" +
+      "tAll\022\026.google.protobuf.Empty\032\037.no.sysco." +
+      "middleware.grpc.Track0\001\022b\n\017GetTrackByAlb",
+      "um\022,.no.sysco.middleware.grpc.SimpleTrac" +
+      "kRequest\032\037.no.sysco.middleware.grpc.Trac" +
+      "k0\001\022c\n\020GetTrackByArtist\022,.no.sysco.middl" +
+      "eware.grpc.SimpleTrackRequest\032\037.no.sysco" +
+      ".middleware.grpc.Track0\001B/\n\030no.sysco.mid" +
+      "dleware.grpcB\023TrackBaseDefinitionb\006proto" +
+      "3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

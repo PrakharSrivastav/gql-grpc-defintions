@@ -18,6 +18,7 @@ message SimpleTrackRequest {
 }
 
 service TrackService {
+    rpc Get(SimpleTrackRequest) returns (Track);
     rpc GetAll (google.protobuf.Empty) returns (stream Track);
     rpc GetTrackByAlbum (SimpleTrackRequest) returns (stream Track);
     rpc GetTrackByArtist (SimpleTrackRequest) returns (stream Track);

@@ -27,6 +27,33 @@ public final class AlbumServiceGrpc {
   public static final String SERVICE_NAME = "no.sysco.middleware.grpc.AlbumService";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<no.sysco.middleware.grpc.AlbumBaseDefinition.SimpleAlbumRequest,
+      no.sysco.middleware.grpc.AlbumBaseDefinition.Album> getGetMethod;
+
+  public static io.grpc.MethodDescriptor<no.sysco.middleware.grpc.AlbumBaseDefinition.SimpleAlbumRequest,
+      no.sysco.middleware.grpc.AlbumBaseDefinition.Album> getGetMethod() {
+    io.grpc.MethodDescriptor<no.sysco.middleware.grpc.AlbumBaseDefinition.SimpleAlbumRequest, no.sysco.middleware.grpc.AlbumBaseDefinition.Album> getGetMethod;
+    if ((getGetMethod = AlbumServiceGrpc.getGetMethod) == null) {
+      synchronized (AlbumServiceGrpc.class) {
+        if ((getGetMethod = AlbumServiceGrpc.getGetMethod) == null) {
+          AlbumServiceGrpc.getGetMethod = getGetMethod = 
+              io.grpc.MethodDescriptor.<no.sysco.middleware.grpc.AlbumBaseDefinition.SimpleAlbumRequest, no.sysco.middleware.grpc.AlbumBaseDefinition.Album>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "no.sysco.middleware.grpc.AlbumService", "Get"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.grpc.AlbumBaseDefinition.SimpleAlbumRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.grpc.AlbumBaseDefinition.Album.getDefaultInstance()))
+                  .setSchemaDescriptor(new AlbumServiceMethodDescriptorSupplier("Get"))
+                  .build();
+          }
+        }
+     }
+     return getGetMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Empty,
       no.sysco.middleware.grpc.AlbumBaseDefinition.Album> getGetAllMethod;
 
@@ -137,6 +164,13 @@ public final class AlbumServiceGrpc {
 
     /**
      */
+    public void get(no.sysco.middleware.grpc.AlbumBaseDefinition.SimpleAlbumRequest request,
+        io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.AlbumBaseDefinition.Album> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void getAll(com.google.protobuf.Empty request,
         io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.AlbumBaseDefinition.Album> responseObserver) {
       asyncUnimplementedUnaryCall(getGetAllMethod(), responseObserver);
@@ -158,6 +192,13 @@ public final class AlbumServiceGrpc {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getGetMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                no.sysco.middleware.grpc.AlbumBaseDefinition.SimpleAlbumRequest,
+                no.sysco.middleware.grpc.AlbumBaseDefinition.Album>(
+                  this, METHODID_GET)))
           .addMethod(
             getGetAllMethod(),
             asyncServerStreamingCall(
@@ -199,6 +240,14 @@ public final class AlbumServiceGrpc {
     protected AlbumServiceStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new AlbumServiceStub(channel, callOptions);
+    }
+
+    /**
+     */
+    public void get(no.sysco.middleware.grpc.AlbumBaseDefinition.SimpleAlbumRequest request,
+        io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.AlbumBaseDefinition.Album> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -246,6 +295,13 @@ public final class AlbumServiceGrpc {
 
     /**
      */
+    public no.sysco.middleware.grpc.AlbumBaseDefinition.Album get(no.sysco.middleware.grpc.AlbumBaseDefinition.SimpleAlbumRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
     public java.util.Iterator<no.sysco.middleware.grpc.AlbumBaseDefinition.Album> getAll(
         com.google.protobuf.Empty request) {
       return blockingServerStreamingCall(
@@ -288,6 +344,14 @@ public final class AlbumServiceGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<no.sysco.middleware.grpc.AlbumBaseDefinition.Album> get(
+        no.sysco.middleware.grpc.AlbumBaseDefinition.SimpleAlbumRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<no.sysco.middleware.grpc.AlbumBaseDefinition.Album> getAlbumByTrack(
         no.sysco.middleware.grpc.AlbumBaseDefinition.SimpleAlbumRequest request) {
       return futureUnaryCall(
@@ -295,9 +359,10 @@ public final class AlbumServiceGrpc {
     }
   }
 
-  private static final int METHODID_GET_ALL = 0;
-  private static final int METHODID_GET_ALBUM_BY_ARTIST = 1;
-  private static final int METHODID_GET_ALBUM_BY_TRACK = 2;
+  private static final int METHODID_GET = 0;
+  private static final int METHODID_GET_ALL = 1;
+  private static final int METHODID_GET_ALBUM_BY_ARTIST = 2;
+  private static final int METHODID_GET_ALBUM_BY_TRACK = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -316,6 +381,10 @@ public final class AlbumServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_GET:
+          serviceImpl.get((no.sysco.middleware.grpc.AlbumBaseDefinition.SimpleAlbumRequest) request,
+              (io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.AlbumBaseDefinition.Album>) responseObserver);
+          break;
         case METHODID_GET_ALL:
           serviceImpl.getAll((com.google.protobuf.Empty) request,
               (io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.AlbumBaseDefinition.Album>) responseObserver);
@@ -389,6 +458,7 @@ public final class AlbumServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new AlbumServiceFileDescriptorSupplier())
+              .addMethod(getGetMethod())
               .addMethod(getGetAllMethod())
               .addMethod(getGetAlbumByArtistMethod())
               .addMethod(getGetAlbumByTrackMethod())

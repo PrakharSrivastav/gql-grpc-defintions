@@ -27,6 +27,33 @@ public final class ArtistServiceGrpc {
   public static final String SERVICE_NAME = "no.sysco.middleware.grpc.ArtistService";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<no.sysco.middleware.grpc.ArtistBaseDefinition.SimpleArtistRequest,
+      no.sysco.middleware.grpc.ArtistBaseDefinition.Artist> getGetMethod;
+
+  public static io.grpc.MethodDescriptor<no.sysco.middleware.grpc.ArtistBaseDefinition.SimpleArtistRequest,
+      no.sysco.middleware.grpc.ArtistBaseDefinition.Artist> getGetMethod() {
+    io.grpc.MethodDescriptor<no.sysco.middleware.grpc.ArtistBaseDefinition.SimpleArtistRequest, no.sysco.middleware.grpc.ArtistBaseDefinition.Artist> getGetMethod;
+    if ((getGetMethod = ArtistServiceGrpc.getGetMethod) == null) {
+      synchronized (ArtistServiceGrpc.class) {
+        if ((getGetMethod = ArtistServiceGrpc.getGetMethod) == null) {
+          ArtistServiceGrpc.getGetMethod = getGetMethod = 
+              io.grpc.MethodDescriptor.<no.sysco.middleware.grpc.ArtistBaseDefinition.SimpleArtistRequest, no.sysco.middleware.grpc.ArtistBaseDefinition.Artist>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "no.sysco.middleware.grpc.ArtistService", "Get"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.grpc.ArtistBaseDefinition.SimpleArtistRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.grpc.ArtistBaseDefinition.Artist.getDefaultInstance()))
+                  .setSchemaDescriptor(new ArtistServiceMethodDescriptorSupplier("Get"))
+                  .build();
+          }
+        }
+     }
+     return getGetMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Empty,
       no.sysco.middleware.grpc.ArtistBaseDefinition.Artist> getGetAllMethod;
 
@@ -137,6 +164,13 @@ public final class ArtistServiceGrpc {
 
     /**
      */
+    public void get(no.sysco.middleware.grpc.ArtistBaseDefinition.SimpleArtistRequest request,
+        io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.ArtistBaseDefinition.Artist> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void getAll(com.google.protobuf.Empty request,
         io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.ArtistBaseDefinition.Artist> responseObserver) {
       asyncUnimplementedUnaryCall(getGetAllMethod(), responseObserver);
@@ -158,6 +192,13 @@ public final class ArtistServiceGrpc {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getGetMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                no.sysco.middleware.grpc.ArtistBaseDefinition.SimpleArtistRequest,
+                no.sysco.middleware.grpc.ArtistBaseDefinition.Artist>(
+                  this, METHODID_GET)))
           .addMethod(
             getGetAllMethod(),
             asyncServerStreamingCall(
@@ -199,6 +240,14 @@ public final class ArtistServiceGrpc {
     protected ArtistServiceStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new ArtistServiceStub(channel, callOptions);
+    }
+
+    /**
+     */
+    public void get(no.sysco.middleware.grpc.ArtistBaseDefinition.SimpleArtistRequest request,
+        io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.ArtistBaseDefinition.Artist> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -246,6 +295,13 @@ public final class ArtistServiceGrpc {
 
     /**
      */
+    public no.sysco.middleware.grpc.ArtistBaseDefinition.Artist get(no.sysco.middleware.grpc.ArtistBaseDefinition.SimpleArtistRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
     public java.util.Iterator<no.sysco.middleware.grpc.ArtistBaseDefinition.Artist> getAll(
         com.google.protobuf.Empty request) {
       return blockingServerStreamingCall(
@@ -286,11 +342,20 @@ public final class ArtistServiceGrpc {
         io.grpc.CallOptions callOptions) {
       return new ArtistServiceFutureStub(channel, callOptions);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<no.sysco.middleware.grpc.ArtistBaseDefinition.Artist> get(
+        no.sysco.middleware.grpc.ArtistBaseDefinition.SimpleArtistRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetMethod(), getCallOptions()), request);
+    }
   }
 
-  private static final int METHODID_GET_ALL = 0;
-  private static final int METHODID_GET_ARTIST_BY_ALBUM = 1;
-  private static final int METHODID_GET_ARTIST_BY_TRACK = 2;
+  private static final int METHODID_GET = 0;
+  private static final int METHODID_GET_ALL = 1;
+  private static final int METHODID_GET_ARTIST_BY_ALBUM = 2;
+  private static final int METHODID_GET_ARTIST_BY_TRACK = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -309,6 +374,10 @@ public final class ArtistServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_GET:
+          serviceImpl.get((no.sysco.middleware.grpc.ArtistBaseDefinition.SimpleArtistRequest) request,
+              (io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.ArtistBaseDefinition.Artist>) responseObserver);
+          break;
         case METHODID_GET_ALL:
           serviceImpl.getAll((com.google.protobuf.Empty) request,
               (io.grpc.stub.StreamObserver<no.sysco.middleware.grpc.ArtistBaseDefinition.Artist>) responseObserver);
@@ -382,6 +451,7 @@ public final class ArtistServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new ArtistServiceFileDescriptorSupplier())
+              .addMethod(getGetMethod())
               .addMethod(getGetAllMethod())
               .addMethod(getGetArtistByAlbumMethod())
               .addMethod(getGetArtistByTrackMethod())

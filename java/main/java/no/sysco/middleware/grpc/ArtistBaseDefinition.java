@@ -1355,15 +1355,18 @@ public final class ArtistBaseDefinition {
       "\032\033google/protobuf/empty.proto\"7\n\006Artist\022" +
       "\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013description" +
       "\030\003 \001(\t\"!\n\023SimpleArtistRequest\022\n\n\002id\030\001 \001(" +
-      "\t2\243\002\n\rArtistService\022D\n\006GetAll\022\026.google.p" +
-      "rotobuf.Empty\032 .no.sysco.middleware.grpc" +
-      ".Artist0\001\022e\n\020GetArtistByAlbum\022-.no.sysco" +
-      ".middleware.grpc.SimpleArtistRequest\032 .n" +
-      "o.sysco.middleware.grpc.Artist0\001\022e\n\020GetA" +
-      "rtistByTrack\022-.no.sysco.middleware.grpc.",
-      "SimpleArtistRequest\032 .no.sysco.middlewar" +
-      "e.grpc.Artist0\001B0\n\030no.sysco.middleware.g" +
-      "rpcB\024ArtistBaseDefinitionb\006proto3"
+      "\t2\373\002\n\rArtistService\022V\n\003Get\022-.no.sysco.mi" +
+      "ddleware.grpc.SimpleArtistRequest\032 .no.s" +
+      "ysco.middleware.grpc.Artist\022D\n\006GetAll\022\026." +
+      "google.protobuf.Empty\032 .no.sysco.middlew" +
+      "are.grpc.Artist0\001\022e\n\020GetArtistByAlbum\022-." +
+      "no.sysco.middleware.grpc.SimpleArtistReq",
+      "uest\032 .no.sysco.middleware.grpc.Artist0\001" +
+      "\022e\n\020GetArtistByTrack\022-.no.sysco.middlewa" +
+      "re.grpc.SimpleArtistRequest\032 .no.sysco.m" +
+      "iddleware.grpc.Artist0\001B0\n\030no.sysco.midd" +
+      "leware.grpcB\024ArtistBaseDefinitionb\006proto" +
+      "3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

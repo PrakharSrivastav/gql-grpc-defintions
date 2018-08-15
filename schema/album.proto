@@ -16,6 +16,7 @@ message SimpleAlbumRequest {
 }
 
 service AlbumService {
+    rpc Get(SimpleAlbumRequest) returns (Album){}
     rpc GetAll (google.protobuf.Empty) returns (stream Album){}
     rpc GetAlbumByArtist (SimpleAlbumRequest) returns (stream Album){}
     rpc GetAlbumByTrack (SimpleAlbumRequest) returns (Album){}

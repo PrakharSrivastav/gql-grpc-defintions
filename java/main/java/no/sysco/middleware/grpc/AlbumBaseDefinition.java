@@ -1492,16 +1492,18 @@ public final class AlbumBaseDefinition {
       "\033google/protobuf/empty.proto\"H\n\005Album\022\n\n" +
       "\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\020\n\010artistId\030\003 \001(" +
       "\t\022\023\n\013description\030\004 \001(\t\" \n\022SimpleAlbumReq" +
-      "uest\022\n\n\002id\030\001 \001(\t2\240\002\n\014AlbumService\022E\n\006Get" +
-      "All\022\026.google.protobuf.Empty\032\037.no.sysco.m" +
-      "iddleware.grpc.Album\"\0000\001\022e\n\020GetAlbumByAr" +
-      "tist\022,.no.sysco.middleware.grpc.SimpleAl" +
-      "bumRequest\032\037.no.sysco.middleware.grpc.Al" +
-      "bum\"\0000\001\022b\n\017GetAlbumByTrack\022,.no.sysco.mi",
-      "ddleware.grpc.SimpleAlbumRequest\032\037.no.sy" +
-      "sco.middleware.grpc.Album\"\000B/\n\030no.sysco." +
-      "middleware.grpcB\023AlbumBaseDefinitionb\006pr" +
-      "oto3"
+      "uest\022\n\n\002id\030\001 \001(\t2\370\002\n\014AlbumService\022V\n\003Get" +
+      "\022,.no.sysco.middleware.grpc.SimpleAlbumR" +
+      "equest\032\037.no.sysco.middleware.grpc.Album\"" +
+      "\000\022E\n\006GetAll\022\026.google.protobuf.Empty\032\037.no" +
+      ".sysco.middleware.grpc.Album\"\0000\001\022e\n\020GetA" +
+      "lbumByArtist\022,.no.sysco.middleware.grpc.",
+      "SimpleAlbumRequest\032\037.no.sysco.middleware" +
+      ".grpc.Album\"\0000\001\022b\n\017GetAlbumByTrack\022,.no." +
+      "sysco.middleware.grpc.SimpleAlbumRequest" +
+      "\032\037.no.sysco.middleware.grpc.Album\"\000B/\n\030n" +
+      "o.sysco.middleware.grpcB\023AlbumBaseDefini" +
+      "tionb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

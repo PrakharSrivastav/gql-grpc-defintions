@@ -15,6 +15,7 @@ message SimpleArtistRequest {
 }
 
 service ArtistService {
+    rpc Get(SimpleArtistRequest) returns(Artist);
     rpc GetAll (google.protobuf.Empty) returns (stream Artist);
     rpc GetArtistByAlbum (SimpleArtistRequest) returns (stream Artist);
     rpc GetArtistByTrack (SimpleArtistRequest) returns (stream Artist);
